@@ -30,7 +30,8 @@ type typeProps = {
         buttonSize?: ButtonSize,
         widthBlock?: WidthBlock, } & (ButtonProps | LinkProps);
 
-    const Button: React.FC<typeProps>  = ({
+
+const Button: React.FC<typeProps>  = ({
                         styles='',
                         icon,
                         iconSize=IconSize.size16,

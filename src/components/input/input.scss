@@ -1,0 +1,42 @@
+.input{
+  outline: none;
+  padding: 4px 16px;
+  border-radius: 10px;
+  border: 1px solid #d7cfcf;
+
+  &:focus{
+    border: 1px solid blue;
+  }
+
+  &-success{
+    border: 1px solid #23ff0b54;
+    background: #23ff0b54;
+  }
+
+  &-error{
+    border: 1px solid rgba(255, 11, 11, 0.33);
+    background: rgba(255, 11, 11, 0.33);
+  }
+
+  &-default{
+    border: 1px solid #d7cfcf;
+  }
+
+  &-container{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-widthBlock100{
+    width: 100% !important;
+  }
+}
+
+.error-message{
+  font-size: 12px;
+  text-align: left;
+  color: #a60b1a;
+  padding: 4px 16px;
+}

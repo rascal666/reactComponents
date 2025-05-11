@@ -2,6 +2,8 @@ import './App.css'
 import Button from "./components/button/button.tsx";
 import logo from '../public/vite.svg'
 import {ButtonColorsOutline, IconPosition, IconSize, ImageTextGap} from "./components/button/enumButton.ts";
+import Input from "./components/input/input.tsx";
+import {Status} from "./components/input/enumInput.ts";
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
             title="dvdv"
             buttonColorsOutline={ButtonColorsOutline.successOutline}
         />
+
+        <Input status={Status.success}  value='hello: ' ></Input>
 
     </div>
   )
