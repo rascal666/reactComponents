@@ -1,3 +1,4 @@
+import {useState} from "react";
 import './App.css'
 import Button from "./components/button/button.tsx";
 import logo from '../public/vite.svg'
@@ -6,6 +7,16 @@ import Input from "./components/input/input.tsx";
 import {Status} from "./components/input/enumInput.ts";
 
 function App() {
+
+    const [value, setValue] = useState({
+        name: '',
+        lastName: '',
+    });
+
+
+    const handleClick = () => {
+        console.log(value, 'values')
+    }
 
   return (
     <div>
@@ -20,8 +31,9 @@ function App() {
             buttonColorsOutline={ButtonColorsOutline.successOutline}
         />
 
-        <Input status={Status.success}  value='hello: ' ></Input>
-
+        <Input status={Status.default} name='name'  value={value.name} setValues={setValue}  ></Input>
+        <Input status={Status.default} name='lastName' value={value.lastName} setValues={setValue}  ></Input>
+        <Button title='submit' onClick={handleClick}></Button>
     </div>
   )
 }

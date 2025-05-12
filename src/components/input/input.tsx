@@ -1,4 +1,4 @@
-import {InputHTMLAttributes, ChangeEvent, useState} from "react";
+import {InputHTMLAttributes} from "react";
 import './input.scss'
 import classNames from 'classnames'
 import {Pattern, Status, WidthBlock} from './enumInput.ts'
@@ -10,7 +10,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     pattern?: Pattern;
     errorMessage?: string;
     widthBlock?: WidthBlock;
-    label?: string
+    label?: string,
+    name?: string,
+    setValues?: any;
 }
 
 
@@ -23,21 +25,19 @@ const Input = (
         errorMessage='',
         widthBlock,
         label,
+        name,
+        setValues,
         ...rest
     }:InputProps
 ) => {
 
-    const [valueDef, setValueDef] = useState(value)
 
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        setValueDef(e.target.value);
-    }
-    
     const classesInput = classNames(
         'input',
         status,
         errorMessage && Status.error
     );
+
 
     const classesContainer = classNames(
         'input-container',
@@ -48,8 +48,13 @@ const Input = (
     return (
         <div className={classesContainer}>
             { label && <label>{label}</label> }
-            <input onChange={(e) => handleChange(e)} pattern={pattern} value={valueDef}
-                   className={classesInput}  {...rest}   />
+            <input
+                onChange={(e) => setValues(val=>({...val,[name]: e.target.value}))}
+                pattern={pattern}
+                value={value}
+                className={classesInput}
+                {...rest}
+            />
             {errorMessage && <span className="error-message">{errorMessage}</span>}
         </div>
     );

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import {IconPosition, IconSize, ImageTextGap, ButtonColors, ButtonColorsOutline,ButtonSize, WidthBlock} from './enumButton.ts'
 
 type ButtonProps = {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+    onClick?: (() => void) | ((e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void);
     disabled?: boolean;
     className?: string;
     attrs?: React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -76,7 +76,7 @@ const Button: React.FC<typeProps>  = ({
 
 
     return (
-            <Tag {...attrs} className={classes} disabled={disabled} onClick={onClickAction} >
+            <Tag {...attrs} className={classes} disabled={disabled} onсlick={onClickAction} >
                 {icon && <img className={iconSize}  src={icon}   alt=""/> }
                 <span>{title}</span>
             </Tag>
