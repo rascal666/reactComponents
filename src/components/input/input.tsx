@@ -12,9 +12,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     widthBlock?: WidthBlock;
     label?: string,
     name?: string,
-    setValues?: any;
+    setValues?: (val: any) => void;
 }
-
 
 
 const Input = (
@@ -44,12 +43,17 @@ const Input = (
         widthBlock
     )
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (setValues && name) {
+            setValues((prevValues: any) => ({ ...prevValues, [name]: e.target.value }));
+        }
+    };
 
     return (
         <div className={classesContainer}>
             { label && <label>{label}</label> }
             <input
-                onChange={(e) => setValues(val=>({...val,[name]: e.target.value}))}
+                onChange={handleChange}
                 pattern={pattern}
                 value={value}
                 className={classesInput}
